@@ -1,0 +1,36 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/general-libs/json-object-validator/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/general-libs/json-object-validator",
+        "tsConfig": "packages/general-libs/json-object-validator/tsconfig.lib.json",
+        "packageJson": "packages/general-libs/json-object-validator/package.json",
+        "main": "packages/general-libs/json-object-validator/src/index.ts",
+        "assets": ["packages/general-libs/json-object-validator/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/general-libs/json-object-validator/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/general-libs/json-object-validator"],
+      "options": {
+        "jestConfig": "packages/general-libs/json-object-validator/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
