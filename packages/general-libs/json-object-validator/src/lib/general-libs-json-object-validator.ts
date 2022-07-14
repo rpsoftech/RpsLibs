@@ -4,6 +4,11 @@ export interface JSONObjectKeyAndTypeValidator {
   default?: any;
   trim?: boolean;
   custom_validator?: (value: any) => boolean;
+  lengths: {
+    min_len?: number;
+    max_len?: number;
+    len?: number;
+  };
   type:
     | 'string'
     | 'number'
@@ -21,7 +26,8 @@ export interface JSONObjectKeyAndTypeValidator {
 
 export function ValidateJSONObject(
   data: any,
-  Validator: JSONObjectKeyAndTypeValidator[]
+  Validator: JSONObjectKeyAndTypeValidator[],
+  strip_data = false
 ): boolean | any {
   const temp: any = {};
   Validator.forEach((a) => {
@@ -46,13 +52,26 @@ export function ValidateJSONObject(
           throw error;
         }
       }
-      if (a.regex) {
+      if (a.regex || a.lengths) {
         let dataCC = data[a.key];
         if (typeof dataCC !== 'string') {
           dataCC = String(dataCC);
         }
-        if (a.regex.test(dataCC) === false) {
-          throw a.error || `${a.key} Regexp MisMAtch`;
+        if (a.lengths) {
+          if (a.lengths.max_len && a.lengths.max_len < dataCC.length) {
+            throw a.error || `${a.key} Min Length Does Not Meet`;
+          }
+          if (a.lengths.min_len && a.lengths.min_len > dataCC.length) {
+            throw a.error || `${a.key} Min Length Does Not Meet`;
+          }
+          if (a.lengths.len && a.lengths.len !== dataCC.length) {
+            throw a.error || `${a.key} Length Does Not Meet`;
+          }
+        }
+        if (a.regex) {
+          if (a.regex.test(dataCC) === false) {
+            throw a.error || `${a.key} Regexp MisMAtch`;
+          }
         }
       }
       if (a.custom_validator) {
@@ -68,5 +87,5 @@ export function ValidateJSONObject(
       }
     }
   });
-  return temp;
+  return strip_data ? temp : true;
 }
