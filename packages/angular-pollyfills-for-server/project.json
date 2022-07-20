@@ -1,0 +1,26 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/angular-pollyfills-for-server/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/angular-pollyfills-for-server",
+        "tsConfig": "packages/angular-pollyfills-for-server/tsconfig.lib.json",
+        "packageJson": "packages/angular-pollyfills-for-server/package.json",
+        "main": "packages/angular-pollyfills-for-server/src/index.ts",
+        "assets": ["packages/angular-pollyfills-for-server/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/angular-pollyfills-for-server/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

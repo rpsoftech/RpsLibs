@@ -4,7 +4,7 @@ export interface JSONObjectKeyAndTypeValidator {
   default?: any;
   trim?: boolean;
   custom_validator?: (value: any) => boolean;
-  lengths: {
+  lengths?: {
     min_len?: number;
     max_len?: number;
     len?: number;

@@ -17,6 +17,9 @@
     "paths": {
       "@rps/jsonvalidator": [
         "packages/general-libs/json-object-validator/src/index.ts"
+      ],
+      "rps-angular-ssr-pollyfills": [
+        "packages/angular-pollyfills-for-server/src/index.ts"
       ]
     }
   },
