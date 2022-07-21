@@ -12,6 +12,11 @@
         "packageJson": "packages/vscode-ext/sql-table-to-json/package.json",
         "main": "packages/vscode-ext/sql-table-to-json/src/extension.ts",
         "assets": ["packages/vscode-ext/sql-table-to-json/*.md"]
+      },
+      "configurations": {
+        "dev":{
+          "watch":true
+        }
       }
     },
     "lint": {

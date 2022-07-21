@@ -6,15 +6,11 @@
 		{
 			"type": "npm",
 			"script": "watch",
-			"problemMatcher": "$tsc-watch",
-			"isBackground": true,
-			"presentation": {
-				"reveal": "never"
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
+			"path": "packages/vscode-ext/sql-table-to-json",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: watch - packages/vscode-ext/sql-table-to-json",
+			"detail": "nx run vscode-ext-sql-table-to-json:build:dev"
 		}
 	]
 }
