@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "angular-pollyfills-for-server": "packages/angular-pollyfills-for-server",
-    "general-libs-json-object-validator": "packages/general-libs/json-object-validator"
+    "general-libs-json-object-validator": "packages/general-libs/json-object-validator",
+    "vscode-ext-sql-table-to-json": "packages/vscode-ext/sql-table-to-json"
   }
 }

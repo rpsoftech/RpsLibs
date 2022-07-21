@@ -20,6 +20,9 @@
       ],
       "rps-angular-ssr-pollyfills": [
         "packages/angular-pollyfills-for-server/src/index.ts"
+      ],
+      "rps-sql-table-to-json": [
+        "packages/vscode-ext/sql-table-to-json/src/index.ts"
       ]
     }
   },
