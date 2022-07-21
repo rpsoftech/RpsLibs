@@ -10,7 +10,7 @@
         "outputPath": "dist/packages/vscode-ext/sql-table-to-json",
         "tsConfig": "packages/vscode-ext/sql-table-to-json/tsconfig.lib.json",
         "packageJson": "packages/vscode-ext/sql-table-to-json/package.json",
-        "main": "packages/vscode-ext/sql-table-to-json/src/index.ts",
+        "main": "packages/vscode-ext/sql-table-to-json/src/extension.ts",
         "assets": ["packages/vscode-ext/sql-table-to-json/*.md"]
       }
     },
