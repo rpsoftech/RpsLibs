@@ -10,16 +10,31 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:sql-table-to-json.helloWorld"
+    "onCommand:sql-table-to-json.helloWorld",
+    "onCommand:catCoding.start",
+    "onView:nodeDependencies"
   ],
   "main": "./src/extension.js",
   "contributes": {
     "commands": [
       {
+        "command": "catCoding.start",
+        "title": "Start new cat coding session",
+        "category": "Cat Coding"
+      },
+      {
         "command": "sql-table-to-json.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "nodeDependencies",
+          "name": "Node Dependencies"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

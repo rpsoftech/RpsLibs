@@ -6,7 +6,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run Extension In Dev Mode",
+      "name": "Run Extension SQL Table To JSON",
       "type": "extensionHost",
       "request": "launch",
       "runtimeExecutable": "${execPath}",
@@ -17,7 +17,6 @@
       "outFiles": [
         "${workspaceFolder}/dist/packages/vscode-ext/sql-table-to-json"
       ],
-    //   "preLaunchTask": "${defaultBuildTask}"
     },
     {
       "name": "Extension Tests",
