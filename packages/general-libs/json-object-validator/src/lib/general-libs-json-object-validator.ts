@@ -1,7 +1,7 @@
 export interface JSONObjectKeyAndTypeValidator {
   key: string;
   required: boolean;
-  default?: any;
+  default?: ()=>any | any;
   trim?: boolean;
   custom_validator?: (value: any) => boolean;
   lengths?: {
@@ -45,7 +45,9 @@ export function ValidateJSONObject(
           data[a.key] = +data[a.key];
         }
       } catch (error) {
-        if (typeof a.default !== 'undefined') {
+        if(typeof a.default === 'function'){
+          data[a.key] = a.default();
+        }else if (typeof a.default !== 'undefined') {
           data[a.key] = a.default;
           return;
         } else {
