@@ -30,6 +30,17 @@
         "jestConfig": "packages/general-libs/json-object-validator/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx run general-libs-json-object-validator:lint",
+          "npx nx run general-libs-json-object-validator:build",
+          "cd  dist/packages/general-libs/json-object-validator",
+          "npm publish"
+        ]
+      }
     }
   },
   "tags": []

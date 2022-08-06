@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface JSONObjectKeyAndTypeValidator {
   key: string;
   required: boolean;
-  default?: ()=>any | any;
+  default?: variabletypes | (() => variabletypes);
   trim?: boolean;
-  custom_validator?: (value: any) => boolean;
+  custom_validator?: (value: variabletypes) => boolean;
   lengths?: {
     min_len?: number;
     max_len?: number;
@@ -16,7 +17,6 @@ export interface JSONObjectKeyAndTypeValidator {
     | 'function'
     | 'object'
     | 'symbol'
-    | 'symbol'
     | 'any'
     | 'bigint';
   regex?: RegExp;
@@ -24,6 +24,7 @@ export interface JSONObjectKeyAndTypeValidator {
   Extra?: JSONObjectKeyAndTypeValidator[];
 }
 
+type variabletypes = string | number | boolean | null | bigint | object;
 export function ValidateJSONObject(
   data: any,
   Validator: JSONObjectKeyAndTypeValidator[],
@@ -45,9 +46,9 @@ export function ValidateJSONObject(
           data[a.key] = +data[a.key];
         }
       } catch (error) {
-        if(typeof a.default === 'function'){
+        if (typeof a.default === 'function') {
           data[a.key] = a.default();
-        }else if (typeof a.default !== 'undefined') {
+        } else if (typeof a.default !== 'undefined') {
           data[a.key] = a.default;
           return;
         } else {
