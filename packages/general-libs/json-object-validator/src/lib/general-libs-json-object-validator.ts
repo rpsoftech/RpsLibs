@@ -32,11 +32,15 @@ export function ValidateJSONObject(
 ): boolean | any {
   const temp: any = {};
   Validator.forEach((a) => {
+    a.error
     if (
       a.required ||
       (typeof data[a.key] !== 'undefined' && data[a.key] !== null)
     ) {
       try {
+        if (typeof data[a.key] === 'undefined') {
+          throw a.error ? `${a.error} In Value Undefined` : `Please Enter Valid Value For Key ${a.key}`;
+        }
         if (a.type === 'number' && isNaN(+data[a.key]) === true) {
           throw a.error || 'Type Mismatch';
         } else if (typeof data[a.key] !== a.type && a.type !== 'any') {
@@ -50,7 +54,6 @@ export function ValidateJSONObject(
           data[a.key] = a.default();
         } else if (typeof a.default !== 'undefined') {
           data[a.key] = a.default;
-          return;
         } else {
           throw error;
         }
@@ -84,7 +87,7 @@ export function ValidateJSONObject(
         }
       }
       if (a.Extra && Array.isArray(a.Extra)) {
-        temp[a.key] = ValidateJSONObject(data[a.key], a.Extra);
+        temp[a.key] = ValidateJSONObject(data[a.key], a.Extra, strip_data);
       } else {
         temp[a.key] = data[a.key];
       }
