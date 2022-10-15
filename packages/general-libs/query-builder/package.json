@@ -1,4 +1,26 @@
 {
   "name": "@rps/query-builder",
-  "version": "0.0.1"
+  "version": "3.1.7",
+  "author": "R P Softech <rpsoftechindia@gmail.com>",
+  "license": "LGPL-2.1-or-later",
+  "description": "Typescript Based Mysql And Mariadb Query Builder",
+  "main": "./dist/index.js",
+  "types": "/dist/index.d.ts",
+  "homepage": "https://github.com/rpsoftech/RpsLibs/tree/main/packages/general-libs",
+  "keywords": [
+    "mariadb",
+    "mysql",
+    "query",
+    "builder"
+  ],
+  "engines": {
+    "node": ">= 12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+1https://github.com/rpsoftech/RpsLibs.git"
+  },
+  "peerDependencies": {
+    "mariadb": "*"
+  }
 }
