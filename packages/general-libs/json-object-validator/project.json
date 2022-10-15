@@ -25,7 +25,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/general-libs/json-object-validator"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/general-libs/json-object-validator"
+      ],
       "options": {
         "jestConfig": "packages/general-libs/json-object-validator/jest.config.ts",
         "passWithNoTests": true

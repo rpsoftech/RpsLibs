@@ -14,8 +14,8 @@
         "assets": ["packages/vscode-ext/sql-table-to-json/*.md"]
       },
       "configurations": {
-        "dev":{
-          "watch":true
+        "dev": {
+          "watch": true
         }
       }
     },
@@ -28,7 +28,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/vscode-ext/sql-table-to-json"],
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/vscode-ext/sql-table-to-json"
+      ],
       "options": {
         "jestConfig": "packages/vscode-ext/sql-table-to-json/jest.config.ts",
         "passWithNoTests": true
