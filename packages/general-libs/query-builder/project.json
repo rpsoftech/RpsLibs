@@ -1,0 +1,35 @@
+{
+  "name": "general-libs-query-builder",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/general-libs/query-builder/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/general-libs/query-builder",
+        "tsConfig": "packages/general-libs/query-builder/tsconfig.lib.json",
+        "packageJson": "packages/general-libs/query-builder/package.json",
+        "main": "packages/general-libs/query-builder/src/index.ts",
+        "assets": ["packages/general-libs/query-builder/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/general-libs/query-builder/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/general-libs/query-builder/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
