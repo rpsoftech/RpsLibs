@@ -43,6 +43,5 @@
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "node dist/packages/vscode-ext/sql-table-to-json/test/runTest.js"
-  },
-  "devDependencies": {}
+  }
 }
