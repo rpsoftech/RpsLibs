@@ -25,6 +25,7 @@ export interface JSONObjectKeyAndTypeValidator {
 }
 
 type variabletypes = string | number | boolean | null | bigint | object;
+export const BooleanNumberCheckRegex = /^[01]$/;
 export function ValidateJSONObject(
   data: any,
   Validator: JSONObjectKeyAndTypeValidator[],
