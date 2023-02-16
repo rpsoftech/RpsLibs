@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface JSONObjectKeyAndTypeValidator {
-  key: string;
+type variabletypes = string | number | boolean | null | bigint | object;
+export interface JSONObjectKeyAndTypeValidator<T = string> {
+  key: T;
   required: boolean;
   default?: variabletypes | (() => variabletypes);
   trim?: boolean;
@@ -24,22 +25,24 @@ export interface JSONObjectKeyAndTypeValidator {
   Extra?: JSONObjectKeyAndTypeValidator[];
 }
 
-type variabletypes = string | number | boolean | null | bigint | object;
-export function ValidateJSONObject(
+export function ValidateJSONObject<R = any>(
   data: any,
   Validator: JSONObjectKeyAndTypeValidator[],
-  strip_data = false
-): boolean | any {
+  strip_data: boolean
+): R | true {
   const temp: any = {};
   Validator.forEach((a) => {
-    a.error
+    const key = a.key.toString();
+    a.error;
     if (
       a.required ||
       (typeof data[a.key] !== 'undefined' && data[a.key] !== null)
     ) {
       try {
         if (typeof data[a.key] === 'undefined') {
-          throw a.error ? `${a.error} In Value Undefined` : `Please Enter Valid Value For Key ${a.key}`;
+          throw a.error
+            ? `${a.error} In Value Undefined`
+            : `Please Enter Valid Value For Key ${a.key}`;
         }
         if (a.type === 'number' && isNaN(+data[a.key]) === true) {
           throw a.error || 'Type Mismatch';
@@ -65,13 +68,13 @@ export function ValidateJSONObject(
         }
         if (a.lengths) {
           if (a.lengths.max_len && a.lengths.max_len < dataCC.length) {
-            throw a.error || `${a.key} Min Length Does Not Meet`;
+            throw a.error || `${key} Min Length Does Not Meet`;
           }
           if (a.lengths.min_len && a.lengths.min_len > dataCC.length) {
-            throw a.error || `${a.key} Min Length Does Not Meet`;
+            throw a.error || `${key} Min Length Does Not Meet`;
           }
           if (a.lengths.len && a.lengths.len !== dataCC.length) {
-            throw a.error || `${a.key} Length Does Not Meet`;
+            throw a.error || `${key} Length Does Not Meet`;
           }
         }
         if (a.regex) {
@@ -86,7 +89,11 @@ export function ValidateJSONObject(
           throw a.error || 'Custom Validator Error';
         }
       }
-      if (a.Extra && Array.isArray(a.Extra)) {
+      if (
+        typeof data[a.key] === 'object' &&
+        a.Extra &&
+        Array.isArray(a.Extra)
+      ) {
         temp[a.key] = ValidateJSONObject(data[a.key], a.Extra, strip_data);
       } else {
         temp[a.key] = data[a.key];
