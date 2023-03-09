@@ -1,4 +1,5 @@
 {
+  "name": "angular-pollyfills-for-server",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/angular-pollyfills-for-server/src",
   "projectType": "library",

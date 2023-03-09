@@ -1,4 +1,5 @@
 {
+  "name": "general-libs-json-object-validator",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/general-libs/json-object-validator/src",
   "projectType": "library",
