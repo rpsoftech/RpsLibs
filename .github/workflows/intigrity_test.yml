@@ -4,7 +4,7 @@ name: Test Intigrity Of Build
 # Controls when the workflow will run
 on:
   push:
-    branches: [ main,devlope,master ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -13,27 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Cache node modules
-        id: cache-npm
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - if: ${{ steps.cache-npm.outputs.cache-hit == false }}
-        name: List the state of node modules
-        continue-on-error: true
-        run: npm list
+          node-version: '16'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install
 
-      - name: Build
-        run: npm run build:all
+      - name: Lint All Projects
+        run: yarn nx run-many --target=lint --all=true
+
+      - name: Build All Projects
+        run: yarn nx run-many --target=build --all=true
