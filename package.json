@@ -7,17 +7,17 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/node": "15.8.5",
+    "@nrwl/node": "15.8.7",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@nrwl/cli": "15.8.5",
-    "@nrwl/eslint-plugin-nx": "15.8.5",
-    "@nrwl/jest": "15.8.5",
-    "@nrwl/js": "15.8.5",
-    "@nrwl/linter": "15.8.5",
-    "@nrwl/nx-cloud": "15.1.1",
-    "@nrwl/workspace": "15.8.5",
+    "@nrwl/cli": "15.8.7",
+    "@nrwl/eslint-plugin-nx": "15.8.7",
+    "@nrwl/jest": "15.8.7",
+    "@nrwl/js": "15.8.7",
+    "@nrwl/linter": "15.8.7",
+    "@nrwl/nx-cloud": "15.2.3",
+    "@nrwl/workspace": "15.8.7",
     "@types/glob": "^7.2.0",
     "@types/jest": "29.4.0",
     "@types/mocha": "^9.1.1",
@@ -33,7 +33,7 @@
     "jest": "29.4.3",
     "jest-environment-jsdom": "29.4.3",
     "mocha": "^10.0.0",
-    "nx": "15.8.5",
+    "nx": "15.8.7",
     "prettier": "^2.6.2",
     "ts-jest": "29.0.5",
     "ts-node": "10.9.1",
@@ -42,5 +42,5 @@
   "workspaces": [
     "packages/**"
   ],
-  "packageManager": "yarn@3.4.1"
+  "packageManager": "yarn@3.5.0"
 }
