@@ -12,14 +12,14 @@ export abstract class QueryBuilder extends GenericQueryBuilder {
   }
 
   // ---------------------------------------- SQL ESCAPE FUNCTIONS ------------------------ //
-  _qb_escape(str: any) {
+  _qb_escape(str: string | boolean | number) {
     if (typeof str === 'boolean') {
       str = str === false ? 0 : 1;
     } else if (
       typeof str === 'number' ||
       (typeof str === 'string' && isNaN(+str) === false)
     ) {
-      (str as any) *= 1;
+      str = +str * 1;
     } else {
       str = this.dbInstance.escape(str);
     }
@@ -132,7 +132,6 @@ export abstract class QueryBuilder extends GenericQueryBuilder {
         throw new Error(
           "You haven't provided any tables to build UPDATE query with!"
         );
-
       }
       throw new Error(
         'You have provided too many tables to build UPDATE query with!'
