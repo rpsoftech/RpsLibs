@@ -1,0 +1,50 @@
+{
+  "name": "general-libs-json-object-validator",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/general-libs/json-object-validator/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/general-libs/json-object-validator",
+        "tsConfig": "packages/general-libs/json-object-validator/tsconfig.lib.json",
+        "packageJson": "packages/general-libs/json-object-validator/package.json",
+        "main": "packages/general-libs/json-object-validator/src/index.ts",
+        "assets": ["packages/general-libs/json-object-validator/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/general-libs/json-object-validator/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/general-libs/json-object-validator"
+      ],
+      "options": {
+        "jestConfig": "packages/general-libs/json-object-validator/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx run general-libs-json-object-validator:lint",
+          "npx nx run general-libs-json-object-validator:build",
+          "cd  dist/packages/general-libs/json-object-validator",
+          "npm publish"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

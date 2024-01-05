@@ -1,0 +1,37 @@
+{
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "NDVhYTk3NTgtNWQwZS00OGNjLTk3MTEtYzFmYzFlMDQ2MjAyfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "extends": "nx/presets/npm.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "npmScope": "rps-libs",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "targetDefaults": {
+    "test": {
+      "inputs": [
+        "default",
+        "^default",
+        "{workspaceRoot}/jest.preset.js"
+      ]
+    },
+    "lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json"
+      ]
+    }
+  }
+}

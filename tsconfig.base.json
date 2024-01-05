@@ -1,0 +1,33 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rps/jsonvalidator": [
+        "packages/general-libs/json-object-validator/src/index.ts"
+      ],
+      "@rps/query-builder": [
+        "packages/general-libs/query-builder/src/index.ts"
+      ],
+      "rps-angular-ssr-pollyfills": [
+        "packages/angular-pollyfills-for-server/src/index.ts"
+      ],
+      "rps-sql-table-to-json": [
+        "packages/vscode-ext/sql-table-to-json/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

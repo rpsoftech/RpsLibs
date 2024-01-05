@@ -1,0 +1,47 @@
+{
+  "name": "sql-table-to-json",
+  "displayName": "Sql Table To JSON",
+  "description": "Generate Json Object Of Tables And Their Colums",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.69.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:sql-table-to-json.helloWorld",
+    "onCommand:catCoding.start",
+    "onView:nodeDependencies"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "catCoding.start",
+        "title": "Start new cat coding session",
+        "category": "Cat Coding"
+      },
+      {
+        "command": "sql-table-to-json.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "nodeDependencies",
+          "name": "Node Dependencies"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "nx run vscode-ext-sql-table-to-json:build:dev",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node dist/packages/vscode-ext/sql-table-to-json/test/runTest.js"
+  }
+}
